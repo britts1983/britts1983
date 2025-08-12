@@ -1,26 +1,18 @@
 ---
 - name: Deploy simple web page (local simulation)
   hosts: web
-  become: yes
+  become: no   # disable sudo for local run
 
   tasks:
-    - name: Ensure /var/www/html exists
+    - name: Ensure html folder exists locally
       ansible.builtin.file:
-        path: /var/www/html
+        path: ./html
         state: directory
 
-    - name: Copy index.html
+    - name: Copy index.html locally
       ansible.builtin.copy:
         content: |
           <h1>Hello from Ansible 🚀</h1>
           <p>Deployed at {{ ansible_date_time.iso8601 }}</p>
-        dest: /var/www/html/index.html
-        owner: root
-        group: root
+        dest: ./html/index.html
         mode: '0644'
-
-    - name: Restart nginx if installed
-      ansible.builtin.service:
-        name: nginx
-        state: restarted
-      ignore_errors: yes
