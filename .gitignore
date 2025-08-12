@@ -1,0 +1,43 @@
+# macOS system files
+.DS_Store
+
+# Local environment configs
+.env
+*.env
+
+# Python cache (if any in scripts)
+__pycache__/
+*.py[cod]
+
+# Ansible
+*.retry
+inventory.ini           # ignore if it contains private IPs/credentials
+*.vault_pass
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform.tfstate*
+*.tfvars
+
+# Kubernetes
+*.log
+*.tmp
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# SSH keys
+*.pem
+*.key
+*.pub
+
+# Node (if any JS tooling)
+node_modules/
+
+# GitHub Actions local runner files
+.github/workflows/*.tmp
+
